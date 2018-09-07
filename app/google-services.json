@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "953077634804",
+    "firebase_url": "https://chatter-84c5b.firebaseio.com",
+    "project_id": "chatter-84c5b",
+    "storage_bucket": "chatter-84c5b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:953077634804:android:847368db2f2bfedc",
+        "android_client_info": {
+          "package_name": "tagroup.thangducanh.com.chatter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "953077634804-b06jnnbr48m0eacdkedvdrgpnenm5jup.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "tagroup.thangducanh.com.chatter",
+            "certificate_hash": "4d3d1d5bbe76fc45271f299bd823953eeaec1b96"
+          }
+        },
+        {
+          "client_id": "953077634804-rvjfepu7h17ebue27ko8e8ubkg4c8ch3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDx17Zvr8e-ZvYyXNqOBP_7YsNaBI_hK5Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "953077634804-rvjfepu7h17ebue27ko8e8ubkg4c8ch3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
