@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -52,7 +53,7 @@ public class GoogleSignInActivity extends AppCompatActivity implements View.OnCl
 
     private void initView() {
         btnGoogleSignIn = findViewById(R.id.btn_google_sign_in);
-        btnGoogleSignIn.setSize(SignInButton.SIZE_STANDARD);
+        btnGoogleSignIn.setSize(SignInButton.SIZE_WIDE);
         btnGoogleSignIn.setOnClickListener(this);
     }
 
@@ -73,15 +74,13 @@ public class GoogleSignInActivity extends AppCompatActivity implements View.OnCl
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
-                // Google Sign In failed, update UI appropriately
-                Log.w("CHATTER_APP", "Google sign in failed", e);
-                // ...
+                Toast.makeText(GoogleSignInActivity.this, R.string.error_login, Toast.LENGTH_SHORT).show();
             }
         }
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
-        Log.d("CHATTER_APP", "firebaseAuthWithGoogle:" + acct.getId());
+        //Log.d("CHATTER_APP", "firebaseAuthWithGoogle:" + acct.getId());
 
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
@@ -90,17 +89,15 @@ public class GoogleSignInActivity extends AppCompatActivity implements View.OnCl
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Log.d("CHATTER_APP", "signInWithCredential:success");
+                            //Log.d("CHATTER_APP", "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
-                            Log.w("CHATTER_APP", "signInWithCredential:failure", task.getException());
+                            //Log.w("CHATTER_APP", "signInWithCredential:failure", task.getException());
                             Snackbar.make(findViewById(R.id.main_layout), "Authentication Failed.", Snackbar.LENGTH_SHORT).show();
                             updateUI(null);
                         }
-
-                        // ...
                     }
                 });
     }
@@ -114,7 +111,13 @@ public class GoogleSignInActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void updateUI(FirebaseUser currentUser) {
-
+        if(null == currentUser) {
+            Toast.makeText(GoogleSignInActivity.this, R.string.requried_login, Toast.LENGTH_SHORT).show();
+        } else {
+            Intent intent = new Intent(GoogleSignInActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
     @Override

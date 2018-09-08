@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Chatter</string>
+    <string name="version">Version 0.1</string>
+    <string name="dang_nhap">Đăng nhập để sử dụng ứng dụng</string>
+    <string name="error_login">Lỗi khi đăng nhập, vui lòng thử lại</string>
+    <string name="requried_login">Vui lòng đăng nhập để sử dụng dịch vụ</string>
+    <string name="tim_kiem">Tìm kiếm bạn bè</string>
 </resources>
